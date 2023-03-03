@@ -5,6 +5,7 @@ function ViewProfile() {
     const [userData, setUserData] = useState({})
     const {id} = useParams()
 
+    /* Fetch user data from url parameter */
     useEffect(() => {
         if(id) {
             fetch("/user/info/" + id, {mode: "cors"})

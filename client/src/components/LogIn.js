@@ -7,6 +7,7 @@ function LogIn({setLoggedIn, setUser}) {
     const [userData, setUserData] = useState({})
     const [error, setError] = useState({})
 
+    /* On succesful login save user data and navigate to home, otherwise show error */
     const submit = (e) => {
         e.preventDefault()
         fetch("/user/login", {

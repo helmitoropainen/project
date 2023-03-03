@@ -6,6 +6,7 @@ function Post({full, post, comment, user}) {
     const [voteData, setVoteData] = useState({ups: 0, downs: 0})
     const [error, setError] = useState({})
 
+    /* Fetch user data of post creator and count post votes */
     useEffect(() => {
         if (post.votes) {
             setVoteData({
@@ -22,6 +23,7 @@ function Post({full, post, comment, user}) {
         }
     }, [post])
 
+    /* Create new vote and update vote state, show error if user is not logged in */
     const vote = (e, vote) => {
         if(post._id) {
             e.stopPropagation()

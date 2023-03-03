@@ -6,7 +6,7 @@ function Register() {
     const [userData, setUserData] = useState({})
     const [error, setError] = useState({})
 
-
+    /* Create new user and show possible errors */
     const submit = (e) => {
         e.preventDefault()
         fetch("/user/register", {

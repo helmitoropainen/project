@@ -7,6 +7,7 @@ function FullPost({user}) {
     const [postComments, setPostComments] = useState({})
     const {id} = useParams()
 
+    /* Fetch post and comment data from url parameter */
     useEffect(() => {
         fetch("/api/post/" + id, {mode: "cors"})
         .then(response => response.json())

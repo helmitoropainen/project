@@ -5,6 +5,7 @@ function EditComment() {
     const [postData, setPostData] = useState({})
     const {id} = useParams()
 
+    /* Fetch post data from url parameter */
     useEffect(() => {
         if(id) {
             fetch("/api/content/post/" + id, {mode: "cors"})
@@ -15,6 +16,7 @@ function EditComment() {
         }
     }, [id])
 
+     /* Edit comment and navigate back to post on success */
     const submit = (e) => {
         e.preventDefault()
         let payload = {}

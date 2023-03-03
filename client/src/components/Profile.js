@@ -5,6 +5,7 @@ function Profile({user, setLoggedIn, setUser}) {
     const [showTextField, setShowTextField] = useState(false)
     const [bio, setBio] = useState({})
 
+    /* Log out user, clear user state, navigate back to home */
     const logOut = () => {
         fetch("/user/logout", {method: "POST"}, {mode: "cors"})
               .then(response => response.json())
@@ -26,6 +27,7 @@ function Profile({user, setLoggedIn, setUser}) {
         setBio({[e.target.name]: e.target.value})
     }
 
+    /* Edit user and update user bio */
     const submit = (e) => {
         e.preventDefault()
         fetch("/user/edit",{ 

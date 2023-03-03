@@ -5,7 +5,7 @@ const User = require("../models/Posts")
 var validateToken = require("../auth/validateToken")
 const { Buffer } = require('buffer')
 
-/* Get all root posts */
+/* Get all root posts (non-comments) */
 router.get('/post/list', async function(req, res, next) {
   try {
     let posts = await Post.find({parentPost: null})
@@ -40,6 +40,7 @@ router.get('/content/post/:id', async function (req, res, next) {
 })
 
 /* New post */
+/* Set post user based on httpOnly cookie */
 router.post("/post", validateToken, function(req, res, next) {
   let token = req.cookies["token"]
   let userID = JSON.parse(Buffer.from(token.split(".")[1], "base64")).id
@@ -66,6 +67,8 @@ router.post("/edit", validateToken, async function (req, res, next) {
 })
 
 /* Vote */
+/* Set vote user based on httpOnly cookie */
+/* If vote for certain post exist from user then update the old one, otherwise push new vote to list */
 router.post("/vote", validateToken, async function (req, res, next) {
   let token = req.cookies["token"]
   let userID = JSON.parse(Buffer.from(token.split(".")[1], "base64")).id

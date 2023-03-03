@@ -8,6 +8,7 @@ function NewComment({user}) {
                 
     const {id} = useParams()
 
+    /* Create new comment and navigate back to post, if not logged in then show error */
     const submit = (e) => {
         e.preventDefault()
         postData["parentPost"] = id

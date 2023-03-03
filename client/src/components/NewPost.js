@@ -6,6 +6,7 @@ function NewPost({user}) {
     const [postData, setPostData] = useState({})
     const [error, setError] = useState({})
 
+    /* Create new comment and navigate back to home, if not logged in then show error */
     const submit = (e) => {
         e.preventDefault()
         fetch("/api/post", {

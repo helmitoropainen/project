@@ -5,6 +5,7 @@ import Post from './Post';
 function ShowPosts({loggedIn, user}) {
     const [postData, setPostData] = useState({})
 
+    /* Fetch all root posts (non-comments) to show on list */
     useEffect(() => {
         fetch("/api/post/list", {mode: "cors"})
         .then(response => response.json())
